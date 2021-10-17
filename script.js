@@ -21,6 +21,15 @@ function decideChoice(integer) {
     return choice;
 }
 
+/* prompt the user for a choice between rock, paper, scissors and sanitize it */
+function promptUser() {
+    let user_choice = prompt("Want to play Rock, Paper, Scissors? If so enter your choice below.");
+    user_choice = user_choice.trim();
+    user_choice = user_choice.charAt(0).toUpperCase() + user_choice.substr(1).toLowerCase();
+    console.log(`user: ${user_choice}`);
+    return user_choice;
+}
+
 /* Compare the computer choice with the user choice and determine who won. Declare the winner. */
 function getWinner (computer_choice, user_choice) {
     if (user_choice === "Rock") {
@@ -61,25 +70,19 @@ function getWinner (computer_choice, user_choice) {
     }
 }
 
-
-/* Take output of getRandomInt and determine what computer chose in rock, paper, scissors. */
 function playRound() {
+    /* Take output of getRandomInt and determine what computer chose in rock, paper, scissors. */
     let computer_choice = decideChoice(getRandomInt());
     console.log(`computer: ${computer_choice}`);
     
-    /* prompt the user for a choice and sanitize it */
-    let user_choice = prompt("Want to play Rock, Paper, Scissors? If so enter your choice below.");
-    user_choice = user_choice.trim();
-    let length = user_choice.length;
-    let substring1_choice = user_choice.charAt(0).toUpperCase();
-    let substring2_choice = user_choice.slice(1, length).toLowerCase();
-    user_choice = substring1_choice + substring2_choice;
-    console.log(`user: ${user_choice}`);
+    /* ask user for their choice */
+    user_choice = promptUser();
     
     /* determine the winner and alert the user to the outcome */
     message = getWinner(computer_choice, user_choice);
     console.log(message);
-    /* tally wins */
+
+    /* tally wins of each type */
     if (message.includes("Won")) {
         userWins++;
     }
