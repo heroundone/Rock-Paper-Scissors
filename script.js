@@ -1,12 +1,12 @@
-/* Need a function that can randomly return an integer from a range of three possible integers(1, 2, 3). Assign each 
-possible integer one of rock, paper, or scissor */
+/* Need a function that can randomly return an integer from a range of three possible integers(1, 2, 3). 
+Assign each possible integer one of rock, paper, or scissors */
 function getRandomInt() {
     let max = 4;
     let min = 1;
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-// Takes output from getRandomInt as an input and decides what the computer chose
+// Takes output from getRandomInt as an input and decides what the computer chose in rock, paper, scissors
 function decideChoice(integer) {
     let choice;
     if (integer === 1) {
@@ -22,7 +22,7 @@ function decideChoice(integer) {
 }
 
 /* Compare the computer choice with the user choice and determine who won. Declare the winner. */
-function Winner (computer_choice, user_choice) {
+function getWinner (computer_choice, user_choice) {
     if (user_choice === "Rock") {
         if (computer_choice === "Rock") {
             return "Tie! No one wins.";
@@ -77,37 +77,37 @@ function playRound() {
     console.log(`user: ${user_choice}`);
     
     /* determine the winner and alert the user to the outcome */
-    message = Winner(computer_choice, user_choice);
+    message = getWinner(computer_choice, user_choice);
     console.log(message);
     /* tally wins */
     if (message.includes("Won")) {
-        user++;
+        userWins++;
     }
     else if (message.includes("Lost")) {
-        computer++;
+        computerWins++;
     }
     else if (message.includes("Tie")) {
-        tie++;
+        ties++;
     }
     else {
         undecided++;
     }
 }
 /* play a 5 round game */
-function game() {
+function playGame() {
     for (let i = 0; i < 5; i++) {
         playRound();
     }
-    console.log(`user wins: ${user}, computer wins: ${computer}, ties: ${tie}, undecided: ${undecided}`);
+    console.log(`user wins: ${userWins}, computer wins: ${computerWins}, ties: ${ties}, undecided: ${undecided}`);
 }
 /* global variables for keeping track of the outcome of each round */
-let user = 0;
-let computer = 0;
-let tie = 0;
+let userWins = 0;
+let computerWins = 0;
+let ties = 0;
 let undecided = 0;
 
 // function that will run the entire game 
-game();
+playGame();
 
 
 
