@@ -1,0 +1,33 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    background-color: black;
+    color: gold;
+    padding: 10px;
+    margin: 0px 10px;
+    width: 100px;
+}
+
+.scorecard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black;
+    padding: 10px;
+    margin: 15px;
+    gap: 20px;
+}
+
+span {
+    margin: 10px;
+}
+
+#playByPlay {
+    display:flex;
+    flex-flow: column wrap;
+}
